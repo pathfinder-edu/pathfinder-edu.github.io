@@ -165,7 +165,7 @@
   .step h3{font-family:'Fraunces',serif;font-weight:600;font-size:1.24rem;margin:10px 0 8px;letter-spacing:-.01em}
   .step p{color:var(--ink-soft);font-size:.97rem}
   .step .dash{
-    position:absolute;top:46px;right:-13px;width:26px;height:2px;
+    position:absolute;top:46px;right:-22px;width:22px;height:2px;
     background:repeating-linear-gradient(90deg,var(--ochre) 0 5px,transparent 5px 10px);
   }
   @media(max-width:760px){.step .dash{display:none}}
@@ -582,7 +582,7 @@
       const res=await fetch(rawUrl);
       if(!res.ok) throw new Error('http '+res.status);
       const txt=await res.text();
-      const mi=txt.indexOf('PASTE FROM HERE');
+      const mi=txt.search(/-{3,}\s*PASTE FROM HERE\s*-{3,}/);
       if(mi===-1) throw new Error('marker not found');
       const nl=txt.indexOf('\n',mi);
       const prompt=txt.slice(nl+1).trim();
